@@ -46,7 +46,7 @@ public class OrderDetail implements java.io.Serializable{
 	private Order order;*/
 
 	@Column(name="pro_qty")
-	private long proQty;
+	private BigDecimal proQty;
 	
 	@Column(name="pro_unit_price")
 	private BigDecimal proUnitPrice;
@@ -66,11 +66,11 @@ public class OrderDetail implements java.io.Serializable{
 		this.pro_others = pro_others;
 	}
 
-	public long getProQty() {
+	public BigDecimal getProQty() {
 		return proQty;
 	}
 
-	public void setProQty(long proQty) {
+	public void setProQty(BigDecimal proQty) {
 		this.proQty = proQty;
 	}
 

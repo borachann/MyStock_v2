@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class ImportForm {
 
-	private long quantity;
+	private BigDecimal quantity;
 	private long proId;
 	private BigDecimal UnitPrice;
 	private long supplierId;
@@ -31,10 +31,10 @@ public class ImportForm {
 	public void setImpId(long impId) {
 		this.impId = impId;
 	}
-	public long getQuantity() {
+	public BigDecimal getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(long quantity) {
+	public void setQuantity(BigDecimal quantity) {
 		this.quantity = quantity;
 	}
 	public long getProId() {

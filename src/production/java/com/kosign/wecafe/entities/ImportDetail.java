@@ -46,7 +46,7 @@ public class ImportDetail implements Serializable{
 
 
 	@Column(name = "pro_qty")
-	private long proQty;
+	private BigDecimal proQty;
 
 	@Column(name = "unit_price")
 	private BigDecimal unitPrice;
@@ -85,11 +85,11 @@ public class ImportDetail implements Serializable{
 		ProId = proId;
 	}
 	*/
-	public long getProQty() {
+	public BigDecimal getProQty() {
 		return proQty;
 	}
 
-	public void setProQty(long proQty) {
+	public void setProQty(BigDecimal proQty) {
 		this.proQty = proQty;
 	}
 

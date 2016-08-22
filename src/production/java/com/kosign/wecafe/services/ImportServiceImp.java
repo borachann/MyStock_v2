@@ -103,7 +103,7 @@ public class ImportServiceImp implements ImportService {
 				//3. update product (stock)
 				Product products  = session.get(Product.class, importdetail.getProduct().getProductId());
 				System.out.println("importdetail.getProduct().getProductId()" + products.getQuantity());
-				products.setQuantity(products.getQuantity() + (importform.get(i).getQuantity()* products.getUnit().getQty() ));
+				products.setQuantity(products.getQuantity().add(importform.get(i).getQuantity().multiply(products.getUnit().getQty())));
 				products.setUnitPrice(importform.get(i).getUnitPrice());
 				/*products.setCostPrice(importform.get(i).getUnitPrice());
 				products.setUnit(unit);
@@ -178,7 +178,7 @@ public class ImportServiceImp implements ImportService {
 				//select product by id
 				Product product = sessionFactory.getCurrentSession().get(Product.class, importDetail.getProduct().getProductId());
 				//update qty in product table 
-				product.setQuantity(product.getQuantity() - importDetail.getProQty());
+				product.setQuantity(product.getQuantity().subtract(importDetail.getProQty()));
 				product.setLastUpdatedDate(new Date());
 				product.setLastUpdatedBy(userService.findUserByUsername(getPrincipal()));				
 				sessionFactory.getCurrentSession().update(product);			
@@ -199,7 +199,7 @@ public class ImportServiceImp implements ImportService {
 				importDetail.setProStatus(true);				
 				
 				product.setUnitPrice(importForm.getUnitPrice());
-				product.setQuantity(product.getQuantity()+importForm.getQuantity());
+				product.setQuantity(product.getQuantity().add(importForm.getQuantity()));
 				
 				sessionFactory.getCurrentSession().flush();
 				sessionFactory.getCurrentSession().clear();

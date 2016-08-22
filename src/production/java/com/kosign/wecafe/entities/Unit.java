@@ -1,5 +1,6 @@
 package com.kosign.wecafe.entities;
 
+import java.math.BigDecimal;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -26,7 +27,7 @@ public class Unit {
 
 	
 	@Column(name="qty")
-	private Long qty;
+	private BigDecimal qty;
 
 	@Column(name="unit_name")
 	private String unitName;
@@ -42,11 +43,11 @@ public class Unit {
 		this.unitId = unitId;
 	}
 
-	public Long getQty() {
+	public BigDecimal getQty() {
 		return qty;
 	}
 
-	public void setQty(Long qty) {
+	public void setQty(BigDecimal qty) {
 		this.qty = qty;
 	}
 

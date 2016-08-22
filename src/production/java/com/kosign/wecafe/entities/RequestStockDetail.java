@@ -1,6 +1,7 @@
 package com.kosign.wecafe.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.AssociationOverride;
 import javax.persistence.AssociationOverrides;
@@ -32,19 +33,19 @@ public class RequestStockDetail implements Serializable{
 	private RequestStockDetailPK pk1 = new RequestStockDetailPK();
 	
 	@Column(name = "pro_qty")
-	private long proQty; 
+	private BigDecimal proQty; 
 	
 	@Column(name = "remain_qty")
 	private long remainQty; 
 	
 
 	
-	public long getProQty() {
+	public BigDecimal getProQty() {
 		return proQty;
 	}
 
-	public void setProQty(long proQty) {
-		this.proQty = proQty;
+	public void setProQty(BigDecimal bigDecimal) {
+		this.proQty = bigDecimal;
 	}
 
 	public RequestStockDetailPK getPk1() {

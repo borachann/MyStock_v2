@@ -1,5 +1,6 @@
 package com.kosign.wecafe.entities;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -34,7 +35,7 @@ public class ExpenseDetail {
 	private String exp_description;
 	
 	@Column(name="expense_qty")
-	private long exp_qty;
+	private BigDecimal exp_qty;
 	
 	@Column(name="expense_unitprice")
 	private long exp_unitprice;
@@ -104,11 +105,11 @@ public class ExpenseDetail {
 		this.exp_description = exp_description;
 	}
 
-	public long getExp_qty() {
+	public BigDecimal getExp_qty() {
 		return exp_qty;
 	}
 
-	public void setExp_qty(long exp_qty) {
+	public void setExp_qty(BigDecimal exp_qty) {
 		this.exp_qty = exp_qty;
 	}
 

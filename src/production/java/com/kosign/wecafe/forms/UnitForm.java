@@ -1,11 +1,13 @@
 package com.kosign.wecafe.forms;
 
+import java.math.BigDecimal;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class UnitForm {
 	private Long unitId;	
 	private String unitName;	
-	private Long unitqty;	
+	private BigDecimal unitqty;	
 	private String unittype;
 	public Long getUnitId() {
 		return unitId;
@@ -19,10 +21,10 @@ public class UnitForm {
 	public void setUnitName(String unitName) {
 		this.unitName = unitName;
 	}
-	public Long getUnitqty() {
+	public BigDecimal getUnitqty() {
 		return unitqty;
 	}
-	public void setUnitqty(Long unitqty) {
+	public void setUnitqty(BigDecimal unitqty) {
 		this.unitqty = unitqty;
 	}
 	public String getUnittype() {

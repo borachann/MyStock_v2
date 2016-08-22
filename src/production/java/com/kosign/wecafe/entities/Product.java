@@ -47,7 +47,7 @@ public class Product implements Serializable{
 	
 	
 	@Column(name="qty",nullable=true)
-	private Long quantity;
+	private BigDecimal quantity;
 	
 	@Column(name="unit_price",nullable=true)
 	private BigDecimal unitPrice;
@@ -105,7 +105,7 @@ public class Product implements Serializable{
 		
 	}
 
-	public Product(Long productId, Set<OrderDetail> orderDetail, String productName, Long quantity,
+	public Product(Long productId, Set<OrderDetail> orderDetail, String productName, BigDecimal quantity,
 			BigDecimal unitPrice, BigDecimal costPrice, BigDecimal salePrice, Category category, Unit unit, String image,
 			byte[] images, Date createdDate, User createdBy, Date lastUpdatedDate, User lastUpdatedBy, Boolean status) {
 		super();
@@ -138,11 +138,11 @@ public class Product implements Serializable{
 		this.productName = productName;
 	}
 
-	public Long getQuantity() {
+	public BigDecimal getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(Long quantity) {
+	public void setQuantity(BigDecimal quantity) {
 		this.quantity = quantity;
 	}
 

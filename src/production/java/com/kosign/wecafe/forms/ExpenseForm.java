@@ -1,16 +1,18 @@
 package com.kosign.wecafe.forms;
 
+import java.math.BigDecimal;
+
 public class ExpenseForm {
-	private long quantity;
+	private BigDecimal quantity;
 	private String proname;
 	private long UnitPrice;
 	private String suppliername;
 	private String remark;
 	private long expId;
-	public long getQuantity() {
+	public BigDecimal getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(long quantity) {
+	public void setQuantity(BigDecimal quantity) {
 		this.quantity = quantity;
 	}
 	public String getProname() {

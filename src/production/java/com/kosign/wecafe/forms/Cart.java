@@ -16,7 +16,7 @@ public class Cart implements Serializable{
 	
 	private BigDecimal price;
 	
-	private Long quantity;
+	private BigDecimal quantity;
 	
 	private BigDecimal totalAmount;
 	
@@ -26,7 +26,7 @@ public class Cart implements Serializable{
 	
 	private String saleType;
 	
-	private Long unitqty;
+	private BigDecimal unitqty;
 
 	private String other;
 
@@ -38,11 +38,11 @@ public class Cart implements Serializable{
 		this.other = other;
 	}
 
-	public Long getUnitqty() {
+	public BigDecimal getUnitqty() {
 		return unitqty;
 	}
 
-	public void setUnitqty(Long unitqty) {
+	public void setUnitqty(BigDecimal unitqty) {
 		this.unitqty = unitqty;
 	}
 
@@ -86,11 +86,11 @@ public class Cart implements Serializable{
 		this.price = price;
 	}
 
-	public Long getQuantity() {
+	public BigDecimal getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(Long quantity) {
+	public void setQuantity(BigDecimal quantity) {
 		this.quantity = quantity;
 	}
 

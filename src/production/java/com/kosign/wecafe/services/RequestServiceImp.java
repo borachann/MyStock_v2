@@ -75,7 +75,7 @@ public class RequestServiceImp implements RequestService {
 
 				RequestStockDetail requestDetail = new RequestStockDetail();
 				Product products = session.get(Product.class, requestForm.get(i).getProId());
-				products.setQuantity(products.getQuantity() - requestForm.get(i).getProQty());
+				products.setQuantity(products.getQuantity().subtract(requestForm.get(i).getProQty()));
 
 				session.update(products);
 				session.update(requestStock);

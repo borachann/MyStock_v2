@@ -123,9 +123,9 @@ public class SellProductServiceImpl implements SellProductsService {
 				orderDetail.setProQty(cart.getQuantity());
 				orderDetail.setProUnitPrice(cart.getPrice());
 				orderDetail.setPro_others(cart.getOther());
-				sale.setTotalAmount(sale.getTotalAmount().add((cart.getPrice().multiply(new BigDecimal(cart.getQuantity())))));
+				sale.setTotalAmount(sale.getTotalAmount().add((cart.getPrice().multiply(cart.getQuantity()))));
 
-				product.setQuantity(product.getQuantity() - cart.getQuantity()*cart.getUnitqty());
+				product.setQuantity(product.getQuantity().subtract(cart.getQuantity().multiply(cart.getUnitqty())));
 				session.update(product);
 
 				order.getOrderDetail().add(orderDetail);
@@ -219,7 +219,7 @@ public class SellProductServiceImpl implements SellProductsService {
 //	}
 
 	@Override
-	public Boolean updateOrderProduct(Long orderId, Long productId, Long qty) {
+	public Boolean updateOrderProduct(Long orderId, Long productId, BigDecimal qty) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.getTransaction().begin();
@@ -273,8 +273,8 @@ public class SellProductServiceImpl implements SellProductsService {
 
 			for (Cart cart : carts) {
 				Product product = session.get(Product.class, new Long(cart.getProductId()));	
-				System.out.println("validationg " + (product.getQuantity() - cart.getQuantity()));
-				if((product.getQuantity() - cart.getQuantity()) < 0 )
+				System.out.println("validationg " + (product.getQuantity().subtract(cart.getQuantity())));
+				if((product.getQuantity().subtract(cart.getQuantity())).compareTo(new BigDecimal(0)) == -1 )
 					return false;
 			}			
 			return true;

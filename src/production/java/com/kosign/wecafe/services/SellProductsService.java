@@ -1,5 +1,6 @@
 package com.kosign.wecafe.services;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.kosign.wecafe.entities.Order;
@@ -18,7 +19,8 @@ public interface SellProductsService {
 	public Boolean validatePro(List<Cart> carts);
 	public Boolean cancelOrder(Long orderID);
 	public Boolean addOrderToSale(Long orderID);
-	public Boolean updateOrderProduct(Long orderId, Long productId, Long qty );
+	public Boolean updateOrderProduct(Long orderId, Long productId, BigDecimal qty );
 	public Boolean deleteOrderProduct(Long orderId, Long productId);
 //	public Boolean updateOrderProduct(OrderDetail orderDetail);
+	//Boolean updateOrderProduct(Long orderId, Long productId, BigDecimal qty);
 }

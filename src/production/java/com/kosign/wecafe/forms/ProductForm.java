@@ -11,7 +11,7 @@ public class ProductForm {
 	private BigDecimal unitPrice;
 	private BigDecimal costPrice;
 	private BigDecimal salePrice;
-	private Long quantity;
+	private BigDecimal quantity;
 	private Long categoryId;
 	private String imgURL;
 	private Long unitId;
@@ -49,11 +49,11 @@ public class ProductForm {
 		this.salePrice = salePrice;
 	}
 
-	public Long getQuantity() {
+	public BigDecimal getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(Long quantity) {
+	public void setQuantity(BigDecimal quantity) {
 		this.quantity = quantity;
 	}
 

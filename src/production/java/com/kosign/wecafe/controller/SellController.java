@@ -135,9 +135,9 @@ public class SellController {
 			carts = (ArrayList<Cart>)session.getAttribute("CARTS"); 
 			for(int i=0; i <carts.size();i++){
 				if(carts.get(i).getProductId().equals(cart.getProductId())){
-					carts.get(i).setQuantity(carts.get(i).getQuantity()+ cart.getQuantity());
+					carts.get(i).setQuantity(carts.get(i).getQuantity().add(cart.getQuantity()));
 					carts.get(i).setPrice(cart.getPrice());
-					carts.get(i).setTotalAmount(cart.getPrice().multiply(new BigDecimal(carts.get(i).getQuantity())));
+					carts.get(i).setTotalAmount(cart.getPrice().multiply(carts.get(i).getQuantity()));
 					carts.get(i).setSaleType(cart.getSaleType());
 					carts.get(i).setUnitqty(cart.getUnitqty());
 					session.setAttribute("CARTS", carts);
@@ -163,7 +163,7 @@ public class SellController {
 				if(carts.get(i).getProductId().equals(cart.getProductId())){
 					//carts.get(i).setQuantity(carts.get(i).getQuantity()+ cart.getQuantity());
 					carts.get(i).setPrice(cart.getPrice());
-					carts.get(i).setTotalAmount(cart.getPrice().multiply(new BigDecimal(carts.get(i).getQuantity())));
+					carts.get(i).setTotalAmount(cart.getPrice().multiply(carts.get(i).getQuantity()));
 					carts.get(i).setSaleType(cart.getSaleType());
 					carts.get(i).setUnitqty(cart.getUnitqty());
 					session.setAttribute("CARTS", carts);
@@ -205,12 +205,12 @@ public class SellController {
 			
 		for(Cart cart: carts){
 			if(cart.getProductId().equals(cartReq.getProductId())){
-				long bb = cart.getQuantity();
-				long aa = 1L;
-				if( bb > aa){
-					cart.setQuantity(cart.getQuantity() - 1);
+				BigDecimal bb = cart.getQuantity();
+				BigDecimal aa = new BigDecimal(1);
+				if( bb.compareTo(aa) == 1){
+					cart.setQuantity(cart.getQuantity().subtract(aa));
 					cart.setPrice(cartReq.getPrice());
-					cart.setTotalAmount(cart.getPrice().multiply(new BigDecimal(cart.getQuantity())));
+					cart.setTotalAmount(cart.getPrice().multiply(cart.getQuantity()));
 					cart.setSaleType(cartReq.getSaleType());
 					System.out.println("cart.getQuantity()" + cart.getQuantity());
 				}
@@ -280,7 +280,7 @@ public class SellController {
 		return false;
 	}
 	@RequestMapping(value="/seller/updateOrderProduct/{orderId}/{productId}/{quatity}", method=RequestMethod.GET)
-	public @ResponseBody Boolean updateOrderProduct(@PathVariable("orderId") Long orderID, @PathVariable("productId") Long productID, @PathVariable("quatity") Long qty){
+	public @ResponseBody Boolean updateOrderProduct(@PathVariable("orderId") Long orderID, @PathVariable("productId") Long productID, @PathVariable("quatity") BigDecimal qty){
 		sellProductService.updateOrderProduct(orderID, productID, qty);
 		return false;
 	}
@@ -307,7 +307,7 @@ public class SellController {
 					//BigDecimal Price = new BigDecimal(lnPrice); 
 					carts.get(i).setQuantity(cartReq.getQuantity());
 					carts.get(i).setPrice(cartReq.getPrice());
-					carts.get(i).setTotalAmount(carts.get(i).getPrice().multiply(new BigDecimal(carts.get(i).getQuantity())));
+					carts.get(i).setTotalAmount(carts.get(i).getPrice().multiply(carts.get(i).getQuantity()));
 					carts.get(i).setSaleType(cartReq.getSaleType());
 					carts.get(i).setUnitqty(cartReq.getUnitqty());
 					carts.get(i).setOther(cartReq.getOther());

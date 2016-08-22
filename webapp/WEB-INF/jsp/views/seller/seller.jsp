@@ -1,3 +1,5 @@
+<%@page import="java.math.MathContext"%>
+<%@page import="java.math.BigDecimal"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="com.kosign.wecafe.forms.Cart"%>
 <%@page import="com.kosign.wecafe.entities.Product"%>
@@ -267,9 +269,9 @@
 												<a href="#"> <span id="btnplus" class="glyphicon glyphicon-plus"></span>
 												</a>
 											</div>
-											<br>	<%=products.get(i).getQuantity()/products.get(i).getUnit().getQty()%> 
+											<br>	<%=products.get(i).getQuantity().divide(products.get(i).getUnit().getQty())%> 
 											 		<%=products.get(i).getUnit().getUnitName()%>, 
-											 		<%=products.get(i).getQuantity()%products.get(i).getUnit().getQty()%> 
+											 		<%=products.get(i).getQuantity().remainder(products.get(i).getUnit().getQty(),new MathContext(2))%> 
 											  		<%=products.get(i).getUnit().getTo()%> 
 										</div>
 									</div>
@@ -1546,9 +1548,9 @@
 															var totalamount = $("#totalamount").val() - _thisRow.children().eq(4).html();
 															_thisRow.children().eq(2).html(saleprice);
 															_thisRow.children().eq(3).html($("#qtytxt").val() + " " + editsaletype);
-															_thisRow.children().eq(4).html(subtotal);
+															_thisRow.children().eq(4).html(subtotal.toFixed(2));
 															_thisRow.children().eq(5).html(other);
-															$("#totalamount").val(subtotal + totalamount);
+															$("#totalamount").val((subtotal + totalamount).toFixed(2));
 															$("#totalreil").val(numeral($("#totalamount").val() * $("#exchangerate").val()).format('0,0'));
 															$(".panel-body").each(function(i,e){
 																var x = $(e).data("id");

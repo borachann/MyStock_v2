@@ -1,16 +1,18 @@
 package com.kosign.wecafe.forms;
 
+import java.math.BigDecimal;
+
 public class RequestForm {
 	
 	private long reqId;
 	private long proId;
-	private long proQty;
+	private BigDecimal proQty;
 	private long remainQty;
 	
-	public long getProQty() {
+	public BigDecimal getProQty() {
 		return proQty;
 	}
-	public void setProQty(long proQty) {
+	public void setProQty(BigDecimal proQty) {
 		this.proQty = proQty;
 	}
 	
